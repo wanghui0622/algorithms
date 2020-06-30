@@ -4,23 +4,17 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * 描述: 包
+ * 描述: 包,只进不出的数据结构
  *
  * @author wanghui email:wanghuiaf@yonyou.com
  * @create 2020-04-29 上午11:35
  */
 public class Bag<Item> implements Iterable<Item> {
-    private Node<Item> first;    // beginning of bag
-    private int n;               // number of elements in bag
-
-    // helper linked list class
-    private static class Node<Item> {
-        private Item item;
-        private Node<Item> next;
-    }
+    private Node<Item> first;    // 包开始节点
+    private int n;               //包中元素数
 
     /**
-     * Initializes an empty bag.
+     * 初始化空包
      */
     public Bag() {
         first = null;
@@ -28,28 +22,27 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Returns true if this bag is empty.
+     * 是否为空包
      *
-     * @return {@code true} if this bag is empty;
-     *         {@code false} otherwise
+     * @return 如果是空包返回：{@code true};否则返回：{@code false}
      */
     public boolean isEmpty() {
         return first == null;
     }
 
     /**
-     * Returns the number of items in this bag.
+     * 返回包中元素数量
      *
-     * @return the number of items in this bag
+     * @return n
      */
     public int size() {
         return n;
     }
 
     /**
-     * Adds the item to this bag.
+     * 向包中添加元素
      *
-     * @param  item the item to add to this bag
+     * @param  item 待添加元素
      */
     public void add(Item item) {
         Node<Item> oldfirst = first;
@@ -61,15 +54,22 @@ public class Bag<Item> implements Iterable<Item> {
 
 
     /**
-     * Returns an iterator that iterates over the items in this bag in arbitrary order.
+     * 返回一个迭代器，该迭代器以任意顺序遍历此包中的项。
      *
-     * @return an iterator that iterates over the items in this bag in arbitrary order
+     * @return 返回迭代器中的一个任意项
      */
     public Iterator<Item> iterator()  {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+
+    // 内部类，链存储数据
+    private static class Node<Item> {
+        private Item item;
+        private Node<Item> next;
+    }
+
+    // 一个简单的链表迭代器内部类
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 

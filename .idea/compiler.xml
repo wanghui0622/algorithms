@@ -24,10 +24,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="aa" />
+        <module name="algorithms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="aa" target="1.8" />
+      <module name="algorithms" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
