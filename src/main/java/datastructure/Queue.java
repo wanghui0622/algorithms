@@ -5,24 +5,29 @@ import java.util.NoSuchElementException;
 
 /**
  * 描述:
- * 队列
+ * 先进先出(FIFO)队列，在队尾插入元素，队顶获取元素
+ * 该队列采用基于链表实现，
+ * 在队列中定义三个属性：
+ * 其中：
+ * n:记录队列中元素数量，初始化为0，调用enqueue增1，调用dequeue减一；
+ * first：指向最早添加的元素，即队顶元素
+ * last : 指向最后添加的元素，即队尾元素
+ * 1)当且仅当n=1时，first == last,此时指向同一个引用；
+ * 2)first链表的最后一个元素 == last；
+ * 使用first和last可以实现快速入队，如果只用first的话，每次入队都需要遍历找到队尾才能插入
  *
  * @author wanghui email:wanghuiaf@yonyou.com
  * @create 2020-06-29 下午2:57
  */
 public class  Queue<Item> implements Iterable<Item>  {
-    private Node<Item> first;    // beginning of queue
-    private Node<Item> last;     // end of queue
-    private int n;               // number of elements on queue
+    private Node<Item> first;    // 指向最早添加的节点
+    private Node<Item> last;     // 指向最近添加的节点
+    private int n;               // 队列中元素数
 
-    // helper linked list class
-    private static class Node<Item> {
-        private Item item;
-        private Node<Item> next;
-    }
+
 
     /**
-     * Initializes an empty queue.
+     * 初始化一个空队列
      */
     public Queue() {
         first = null;
@@ -31,28 +36,28 @@ public class  Queue<Item> implements Iterable<Item>  {
     }
 
     /**
-     * Returns true if this queue is empty.
+     * 队列判空
      *
-     * @return {@code true} if this queue is empty; {@code false} otherwise
+     * @return 如果队列为空，返回{@code true};否则，返回 {@code false}
      */
     public boolean isEmpty() {
         return first == null;
     }
 
     /**
-     * Returns the number of items in this queue.
+     * 队列元素数量
      *
-     * @return the number of items in this queue
+     * @return n
      */
     public int size() {
         return n;
     }
 
     /**
-     * Returns the item least recently added to this queue.
+     * 返回队顶元素，不移除
      *
-     * @return the item least recently added to this queue
-     * @throws NoSuchElementException if this queue is empty
+     * @return  队顶元素
+     * @throws  NoSuchElementException 如果队列为空
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
@@ -60,9 +65,9 @@ public class  Queue<Item> implements Iterable<Item>  {
     }
 
     /**
-     * Adds the item to this queue.
+     * 向队列（队尾）中添加元素
      *
-     * @param  item the item to add
+     * @param  item
      */
     public void enqueue(Item item) {
         Node<Item> oldlast = last;
@@ -75,10 +80,10 @@ public class  Queue<Item> implements Iterable<Item>  {
     }
 
     /**
-     * Removes and returns the item on this queue that was least recently added.
+     * 移除并返回对顶元素
      *
-     * @return the item on this queue that was least recently added
-     * @throws NoSuchElementException if this queue is empty
+     * @return 对顶元素
+     * @throws NoSuchElementException 如果队列为空
      */
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
@@ -90,9 +95,9 @@ public class  Queue<Item> implements Iterable<Item>  {
     }
 
     /**
-     * Returns a string representation of this queue.
+     * 队列的字符串形式
      *
-     * @return the sequence of items in FIFO order, separated by spaces
+     * @return 对头的队尾元素的字符串，用空格间隔
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -103,16 +108,22 @@ public class  Queue<Item> implements Iterable<Item>  {
         return s.toString();
     }
 
+    // 内部类，链存储数据
+    private static class Node<Item> {
+        private Item item;
+        private Node<Item> next;
+    }
+
     /**
-     * Returns an iterator that iterates over the items in this queue in FIFO order.
+     * 迭代
      *
-     * @return an iterator that iterates over the items in this queue in FIFO order
+     * @return
      */
     public Iterator<Item> iterator()  {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // 迭代器内部类
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 
@@ -129,15 +140,5 @@ public class  Queue<Item> implements Iterable<Item>  {
             current = current.next;
             return item;
         }
-    }
-
-
-    /**
-     * Unit tests the {@code Queue} data type.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        Queue<String> queue = new Queue<String>();
     }
 }

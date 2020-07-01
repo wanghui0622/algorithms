@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * 描述: 包,只进不出的数据结构
+ * 描述: 包,只进不出的数据结构,一个用于收集数据，然后遍历数据的数据结构，不能移除数据
  *
  * @author wanghui email:wanghuiaf@yonyou.com
  * @create 2020-04-29 上午11:35

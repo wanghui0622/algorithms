@@ -5,23 +5,17 @@ import java.util.NoSuchElementException;
 
 /**
  * 描述:
- * 栈
+ * 后进先出(LIFO)堆栈
  *
  * @author wanghui email:wanghuiaf@yonyou.com
  * @create 2020-04-29 下午3:12
  */
 public class Stack<Item> implements Iterable<Item> {
-    private Node<Item> first;     // top of stack
-    private int n;                // size of the stack
-
-    // helper linked list class
-    private static class Node<Item> {
-        private Item item;
-        private Node<Item> next;
-    }
+    private Node<Item> first;     // 栈顶元素
+    private int n;                // 栈大小
 
     /**
-     * Initializes an empty stack.
+     * 初始化空栈
      */
     public Stack() {
         first = null;
@@ -29,27 +23,27 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     /**
-     * Returns true if this stack is empty.
+     *堆栈判空
      *
-     * @return true if this stack is empty; false otherwise
+     * @return  如果堆栈为空，返回{@code true};否则，返回 {@code false}
      */
     public boolean isEmpty() {
         return first == null;
     }
 
     /**
-     * Returns the number of items in this stack.
+     * 堆栈元素数量
      *
-     * @return the number of items in this stack
+     * @return n
      */
     public int size() {
         return n;
     }
 
     /**
-     * Adds the item to this stack.
+     * 向堆栈中添加元素
      *
-     * @param  item the item to add
+     * @param  item
      */
     public void push(Item item) {
         Node<Item> oldfirst = first;
@@ -60,24 +54,24 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     /**
-     * Removes and returns the item most recently added to this stack.
+     * 返回并移除栈顶元素
      *
-     * @return the item most recently added
+     * @return
      * @throws NoSuchElementException if this stack is empty
      */
     public Item pop() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = first.item;        // save item to return
-        first = first.next;            // delete first node
+        Item item = first.item;
+        first = first.next;
         n--;
-        return item;                   // return the saved item
+        return item;
     }
 
 
     /**
-     * Returns (but does not remove) the item most recently added to this stack.
+     * 返回但是不删除栈顶元素
      *
-     * @return the item most recently added to this stack
+     * @return
      * @throws NoSuchElementException if this stack is empty
      */
     public Item peek() {
@@ -86,9 +80,9 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     /**
-     * Returns a string representation of this stack.
+     * 堆栈的字符串形式
      *
-     * @return the sequence of items in this stack in LIFO order, separated by spaces
+     * @return
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -101,15 +95,21 @@ public class Stack<Item> implements Iterable<Item> {
 
 
     /**
-     * Returns an iterator to this stack that iterates through the items in LIFO order.
-     *
-     * @return an iterator to this stack that iterates through the items in LIFO order
+     * 后进先出迭代器
+     * @return
      */
     public Iterator<Item> iterator() {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // 内部类，链存储数据
+    private static class Node<Item> {
+        private Item item;
+        private Node<Item> next;
+    }
+
+
+    // 迭代器内部类
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 
