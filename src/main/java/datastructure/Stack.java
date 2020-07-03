@@ -22,6 +22,19 @@ public class Stack<Item> implements Iterable<Item> {
         n = 0;
     }
 
+    public Stack(Stack<Item> s) {
+        if (s.first != null) {
+            first = new Node(s.first);
+            for (Node x = first; x.next != null; x = x.next)
+                x.next = new Node(x.next);
+        }
+    }
+    /*递归构造
+    public Stack(Stack<Item> s) {
+        first = new Node(s.first);
+    }
+    */
+
     /**
      *堆栈判空
      *
@@ -106,6 +119,22 @@ public class Stack<Item> implements Iterable<Item> {
     private static class Node<Item> {
         private Item item;
         private Node<Item> next;
+
+        public Node(){
+
+        }
+
+        public Node(Node<Item> x) {
+            this.item = x.item;
+            this.next = x.next;
+        }
+
+        /*递归构造
+        Node(Node<Item> x) {
+            item = x.item;
+            if (x.next != null) next = new Node(x.next);
+        }
+        */
     }
 
 
