@@ -14,7 +14,7 @@ import datastructure.Queue;
  */
 public class MultiwordSearch {
     public static void main(String[] args) {
-        String[] words = StdIn.readAllStrings();
+        String[] words = null;
 
         Queue<Integer>[] queues = (Queue<Integer>[]) new Queue[args.length];
         for (int j = 0; j < args.length; j++) {
@@ -51,10 +51,10 @@ public class MultiwordSearch {
 
         if (bestlo >= 0) {
             for (int i = bestlo; i <= besthi; i++)
-                StdOut.print(words[i] + " ");
-            StdOut.println();
+                System.out.print(words[i] + " ");
+            System.out.println();
         }
         else
-            StdOut.println("NOT FOUND");
+            System.out.println("NOT FOUND");
     }
 }
