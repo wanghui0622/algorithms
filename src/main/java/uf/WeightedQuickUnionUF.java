@@ -1,16 +1,15 @@
-package base;
+package uf;
 
 /**
  * 描述:
- * 路径压缩加权算法
+ *
  * @author wanghui email:wanghuiaf@yonyou.com
- * @create 2020-05-14 下午4:20
+ * @create 2020-05-09 下午1:55
  */
-public class WeightedQuickUnionPathCompressionUF {
-    private int[] parent;  // parent[i] = parent of i
-    private int[] size;    // size[i] = number of sites in tree rooted at i
-    // Note: not necessarily correct if i is not a root node
-    private int count;     // number of components
+public class WeightedQuickUnionUF {
+    private int[] parent;   // parent[i] = parent of i
+    private int[] size;     // size[i] = number of elements in subtree rooted at i
+    private int count;      // number of components
 
     /**
      * Initializes an empty union-find data structure with
@@ -20,7 +19,7 @@ public class WeightedQuickUnionPathCompressionUF {
      * @param  n the number of elements
      * @throws IllegalArgumentException if {@code n < 0}
      */
-    public WeightedQuickUnionPathCompressionUF(int n) {
+    public WeightedQuickUnionUF(int n) {
         count = n;
         parent = new int[n];
         size = new int[n];
@@ -39,7 +38,6 @@ public class WeightedQuickUnionPathCompressionUF {
         return count;
     }
 
-
     /**
      * Returns the canonical element of the set containing element {@code p}.
      *
@@ -49,15 +47,9 @@ public class WeightedQuickUnionPathCompressionUF {
      */
     public int find(int p) {
         validate(p);
-        int root = p;
-        while (root != parent[root])
-            root = parent[root];
-        while (p != root) {
-            int newp = parent[p];
-            parent[p] = root;
-            p = newp;
-        }
-        return root;
+        while (p != parent[p])
+            p = parent[p];
+        return p;
     }
 
     /**
@@ -110,6 +102,7 @@ public class WeightedQuickUnionPathCompressionUF {
         count--;
     }
 
+
     /**
      * Reads an integer {@code n} and a sequence of pairs of integers
      * (between {@code 0} and {@code n-1}) from standard input, where each integer
@@ -120,7 +113,7 @@ public class WeightedQuickUnionPathCompressionUF {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        WeightedQuickUnionPathCompressionUF uf = new WeightedQuickUnionPathCompressionUF(10);
+        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(10);
         int[][] aa = new int[][]{{4,3}, {3,8}, {6,5}, {9,4}, {2,1}, {8,9}, {5,0}, {7,2}, {6,5}, {6,1}, {1,0}, {6,7}};
         for(int[] a : aa){
             int p = a[0];

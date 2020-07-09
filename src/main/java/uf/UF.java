@@ -1,41 +1,25 @@
-package base;
+package uf;
 
 /**
- * 描述:
  *
- * @author wanghui email:wanghuiaf@yonyou.com
- * @create 2020-05-09 下午1:55
+ * @auther 王辉
+ * @create 2020-07-08 23:01
+ * @Description
  */
-public class WeightedQuickUnionUF {
-    private int[] parent;   // parent[i] = parent of i
-    private int[] size;     // size[i] = number of elements in subtree rooted at i
-    private int count;      // number of components
+public class UF {
+    private int[] parent;  // parent[i] = parent of i
+    private byte[] rank;   // rank[i] = rank of subtree rooted at i (never more than 31)
+    private int count;     // number of components
 
-    /**
-     * Initializes an empty union-find data structure with
-     * {@code n} elements {@code 0} through {@code n-1}.
-     * Initially, each elements is in its own set.
-     *
-     * @param  n the number of elements
-     * @throws IllegalArgumentException if {@code n < 0}
-     */
-    public WeightedQuickUnionUF(int n) {
+    public UF(int n) {
+        if (n < 0) throw new IllegalArgumentException();
         count = n;
         parent = new int[n];
-        size = new int[n];
+        rank = new byte[n];
         for (int i = 0; i < n; i++) {
             parent[i] = i;
-            size[i] = 1;
+            rank[i] = 0;
         }
-    }
-
-    /**
-     * Returns the number of sets.
-     *
-     * @return the number of sets (between {@code 1} and {@code n})
-     */
-    public int count() {
-        return count;
     }
 
     /**
@@ -47,9 +31,20 @@ public class WeightedQuickUnionUF {
      */
     public int find(int p) {
         validate(p);
-        while (p != parent[p])
+        while (p != parent[p]) {
+            parent[p] = parent[parent[p]];    // path compression by halving
             p = parent[p];
+        }
         return p;
+    }
+
+    /**
+     * Returns the number of sets.
+     *
+     * @return the number of sets (between {@code 1} and {@code n})
+     */
+    public int count() {
+        return count;
     }
 
     /**
@@ -68,14 +63,6 @@ public class WeightedQuickUnionUF {
         return find(p) == find(q);
     }
 
-    // validate that p is a valid index
-    private void validate(int p) {
-        int n = parent.length;
-        if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
-        }
-    }
-
     /**
      * Merges the set containing element {@code p} with the
      * the set containing element {@code q}.
@@ -90,18 +77,23 @@ public class WeightedQuickUnionUF {
         int rootQ = find(q);
         if (rootP == rootQ) return;
 
-        // make smaller root point to larger one
-        if (size[rootP] < size[rootQ]) {
-            parent[rootP] = rootQ;
-            size[rootQ] += size[rootP];
-        }
+        // make root of smaller rank point to root of larger rank
+        if      (rank[rootP] < rank[rootQ]) parent[rootP] = rootQ;
+        else if (rank[rootP] > rank[rootQ]) parent[rootQ] = rootP;
         else {
             parent[rootQ] = rootP;
-            size[rootP] += size[rootQ];
+            rank[rootP]++;
         }
         count--;
     }
 
+    // validate that p is a valid index
+    private void validate(int p) {
+        int n = parent.length;
+        if (p < 0 || p >= n) {
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
+        }
+    }
 
     /**
      * Reads an integer {@code n} and a sequence of pairs of integers
@@ -113,15 +105,13 @@ public class WeightedQuickUnionUF {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(10);
+        UF uf = new UF(10);
         int[][] aa = new int[][]{{4,3}, {3,8}, {6,5}, {9,4}, {2,1}, {8,9}, {5,0}, {7,2}, {6,5}, {6,1}, {1,0}, {6,7}};
+
         for(int[] a : aa){
-            int p = a[0];
-            int q = a[1];
+            int p = a[0],q = a[1];
             if (uf.find(p) == uf.find(q)) continue;
             uf.union(p, q);
         }
-        System.out.println(uf.count() + " components");
-    }
-
+        System.out.println(uf.count() + " components");    }
 }

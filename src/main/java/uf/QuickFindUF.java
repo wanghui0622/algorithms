@@ -1,4 +1,4 @@
-package base;
+package uf;
 
 /**
  * 描述:
@@ -110,8 +110,7 @@ public class QuickFindUF {
         int[][] aa = new int[][]{{4,3}, {3,8}, {6,5}, {9,4}, {2,1}, {8,9}, {5,0}, {7,2}, {6,5}, {6,1}, {1,0}, {6,7}};
 
         for(int[] a : aa){
-            int p = a[0];
-            int q = a[1];
+            int p = a[0],q = a[1];
             if (uf.find(p) == uf.find(q)) continue;
             uf.union(p, q);
         }
