@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  */
 public class Stack<Item> implements Iterable<Item> {
     private Node<Item> first;     // 栈顶元素
-    private int n;                // 栈大小
+    private int n;               // 栈大小
 
     /**
      * 初始化空栈
@@ -22,16 +22,22 @@ public class Stack<Item> implements Iterable<Item> {
         n = 0;
     }
 
+    /**
+     * 拷贝构造函数
+     * @param s  拷贝构造函数
+     */
     public Stack(Stack<Item> s) {
         if (s.first != null) {
-            first = new Node(s.first);
-            for (Node x = first; x.next != null; x = x.next)
-                x.next = new Node(x.next);
+            first = new Node<Item>(s.first);
+            for (Node<Item> x = first; x.next != null; x = x.next)
+                x.next = new Node<Item>(x.next);
         }
+        n = s.size();
     }
-    /*递归构造
+    /*拷贝构造函数——递归构造
     public Stack(Stack<Item> s) {
         first = new Node(s.first);
+        n = s.size();
     }
     */
 
@@ -59,10 +65,10 @@ public class Stack<Item> implements Iterable<Item> {
      * @param  item
      */
     public void push(Item item) {
-        Node<Item> oldfirst = first;
+        Node<Item> oldFirst = first;
         first = new Node<Item>();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
         n++;
     }
 

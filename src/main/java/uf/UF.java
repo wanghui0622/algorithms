@@ -2,9 +2,9 @@ package uf;
 
 /**
  *
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-08 23:01
- * @Description
+ * @Description union find
  */
 public class UF {
     private int[] parent;  // parent[i] = parent of i
