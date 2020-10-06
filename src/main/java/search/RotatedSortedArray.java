@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  *
  * 在已排序的旋转数组中搜索
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-08 22:47
  * @Description
  */

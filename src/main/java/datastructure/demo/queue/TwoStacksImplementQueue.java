@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * 两个堆栈实现一个队列
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-24 23:13
  * @Description
  * 思路：一个堆栈用于入队，一个堆栈用于出队

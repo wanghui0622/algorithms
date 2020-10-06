@@ -3,7 +3,7 @@ package datastructure.demo.stack;
 import datastructure.Stack;
 
 /**
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-01 23:02
  * @Description 堆栈实现算数计算器
  */

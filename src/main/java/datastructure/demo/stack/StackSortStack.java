@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * 栈排序
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-26 11:54
  * @Description
  * 只申请一个辅助栈和必要的变量实现栈从栈顶到底按照由大到小的顺序排序

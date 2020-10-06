@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 快速计算2-sum算法
  *
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-07 23:56
  * @Description 读入n个整数，统计两个数之和为0的数对个数。时间复杂度是NLogN;暴力匹配的话，时间复杂度为N^2
  * 假设：没有重复数

@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * 汉诺塔
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-26 12:04
  * @Description
  * 每次只能移动一个塔柱，即不能直接从右侧到左侧，也不能从左侧到右侧，必须借助中间塔柱。

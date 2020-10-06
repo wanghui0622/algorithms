@@ -5,7 +5,7 @@ import java.util.Queue;
 
 /**
  * 猫狗队列
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-26 11:33
  * @Description
  * 实现功能：
@@ -13,9 +13,15 @@ import java.util.Queue;
  * 调用pollAll方法将队列中实例按照入队顺序依次弹出
  * 调用pollDog方法按照入队顺序依次弹出dog
  * 调用pollCat方法按照入队顺序依次弹出cat
- * 调用isEmpty方法检查对垒是否为空
+ * 调用isEmpty方法检查队列是否为空
  * 调用isDogEmpty检查队列中是否有dog
  * 调用isCatEmpty检查队列中是否有cat
+ *
+ * 实现思路：
+ * 用两个Queue定义一个猫狗队列，一个queue(dogQ)用于存放dog,另一个（catQ）用于存放cat。
+ * 入队时，根据pet的类型（cat or dog）决定将pet放入哪个队列
+ * 出队时，根据pet的类型（cat or dog）决定哪个队列中的pet出队
+ * 为了保证出队顺序的正确性，需要记录每个pet入队的顺序（PetEnterNode.index）。
  */
 public class DogCatQueueAlg {
 

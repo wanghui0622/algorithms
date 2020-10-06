@@ -5,15 +5,15 @@ import java.util.NoSuchElementException;
 
 /**
  * 数组大小调整队列
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-02 23:21
  * @Description
  */
 public class ResizingArrayQueue<Item> implements Iterable<Item> {
-    private Item[] q;       // queue elements
-    private int n;          // number of elements on queue
-    private int first;      // index of first element of queue
-    private int last;       // index of next available slot
+    private Item[] q;       // 存放队列元素
+    private int n;          // 队列中元素数量
+    private int first;      // 队列中第一个元素的索引
+    private int last;       // 队列中下一个可用位置索引
 
 
     /**
@@ -42,7 +42,10 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
         return n;
     }
 
-    // resize the underlying array
+    /**
+     * 数组大小调整
+     * @param capacity 容量
+     */
     private void resize(int capacity) {
         assert capacity >= n;
         Item[] copy = (Item[]) new Object[capacity];

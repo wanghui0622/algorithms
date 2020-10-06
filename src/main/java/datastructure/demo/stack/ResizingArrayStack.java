@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 /**
  * 数组大小调整堆栈
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-02 22:50
  * @Description
  */

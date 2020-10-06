@@ -2,7 +2,7 @@ package sort;
 
 /**
  * 带标记的插入排序
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-09 23:43
  * @Description
  * 该实现消除了内部循环中的j > 0测试，方法是首先将最小的项放入位置。

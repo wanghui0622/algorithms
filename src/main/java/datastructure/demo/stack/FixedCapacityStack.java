@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 /**
  * 固定容量的通用堆栈
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-02 22:48
  * @Description
  */

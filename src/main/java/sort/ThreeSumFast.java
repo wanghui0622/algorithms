@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 快速3-sum
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-08 0:14
  * @Description 该类为计数提供了静态方法,然后输出一个由不同整数组成的数组中的三组的个数和为0(忽略整数溢出)。
  * 时间复杂度N^2logN;暴力匹配时间复杂度为N^3

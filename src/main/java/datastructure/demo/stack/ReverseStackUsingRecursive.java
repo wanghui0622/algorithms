@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * 使用一个栈和递归实现堆的转置
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-24 23:21
  * @Description
  * 举例：

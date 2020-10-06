@@ -6,7 +6,7 @@ import static sun.java2d.cmm.ColorTransform.In;
 
 /**
  * 平衡字符串
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-02 23:53
  * @Description 它从标准输入中按顺序读取左右括号，大括号和方括号的顺序，并使用堆栈来确定顺序是否正确平衡。
  * 例如，输入：[()]{}{[()()]()}打印true， [(])打印false

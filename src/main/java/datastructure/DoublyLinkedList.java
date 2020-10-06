@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * 双向链表
  *
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-04 13:00
  * @Description
  */

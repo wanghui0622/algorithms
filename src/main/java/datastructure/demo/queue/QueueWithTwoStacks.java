@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 /**
  * 两个堆栈实现一个队列
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-04 22:50
  * @Description
  * s1:入队时，元素永远只存在s1中；出队时，元素永远从s2中出队。

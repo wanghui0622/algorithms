@@ -4,7 +4,7 @@ import utils.StdRandom;
 
 /**
  * 双向搜索
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-08 22:19
  * @Description
  * 如果数组由递增的整数序列，紧随其后的递减的整数序列组成，则该数组是双音调的。

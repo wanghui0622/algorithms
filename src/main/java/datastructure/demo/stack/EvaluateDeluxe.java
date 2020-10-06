@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 /**
  * 中缀表达式计算
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-03 23:56
  * @Description
  * 计算思路：

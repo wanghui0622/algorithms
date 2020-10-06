@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * 伪随机数（pseudo-random）生成工具类
- * @auther 王辉
+ * @author 王辉
  * @create 2020-07-08 22:23
  * @Description
  */
