@@ -11,12 +11,13 @@
 * **队列**：一种先进先出(FIFO)的数据结构
 在datastructure.demo中列举了一些列数据结构的场景,其中queue包中是队列的用例，stack中是堆栈的用例。  
 **queue包**  
+|类名|算法含义|
+|:-:|:-:|
 | DogCatQueueAlg |猫狗队列|
-|:-|-:|
 | Josephus |约瑟夫斯问题|
 | !!!MultiwordSearch |多字搜索|
 | QueueWithTwoStacks |两个堆栈实现一个队列|
-| ResizingArrayQueue |数组大小调整队列|
+| ResizingArryQueue |数组大小调整队列|
 | SlidingWindowMaxArray |生成窗口最大值|
 | TwoStacksImplementQueue |两个堆栈生成一个队列|
 
