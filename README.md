@@ -11,6 +11,7 @@
 * **队列**：一种先进先出(FIFO)的数据结构
 在datastructure.demo中列举了一些列数据结构的场景,其中queue包中是队列的用例，stack中是堆栈的用例。  
 **queue包**  
+
 |类名|算法含义|
 |:-:|:-:|
 | DogCatQueueAlg |猫狗队列|
