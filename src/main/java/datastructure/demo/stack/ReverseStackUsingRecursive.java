@@ -14,7 +14,7 @@ import java.util.Stack;
  *
  * 思路：
  * 从栈中获取所有元素，然后反向压入，即获取后压入顺序变为 5 4 3 2 1
- *
+ * 注意：有很多方法可以实现堆栈转置，使用迭代是其中一种方法，但是如果堆栈中元素数量较多时，可能会导致java.lang.StackOverflowError
  *
  *
  */
@@ -22,7 +22,7 @@ public class ReverseStackUsingRecursive {
 
     /**
      * 转置堆栈
-     * @param stack
+     * @param stack 待转置堆栈
      */
     public static void reverse(Stack<Integer> stack) {
         if (stack.isEmpty()) {
@@ -35,8 +35,8 @@ public class ReverseStackUsingRecursive {
 
     /**
      * 获取栈底元素返回；并将其他元素重新压入栈
-     * @param stack
-     * @return
+     * @param stack 栈
+     * @return      栈底元素
      */
     private static int getAndRemoveLastElement(Stack<Integer> stack) {
         int result = stack.pop();
@@ -51,15 +51,15 @@ public class ReverseStackUsingRecursive {
 
     public static void main(String[] args) {
         Stack<Integer> test = new Stack<Integer>();
-        test.push(1);
-        test.push(2);
-        test.push(3);
-        test.push(4);
-        test.push(5);
-        reverse(test);
-        while (!test.isEmpty()) {
-            System.out.println(test.pop());
+        for(int i = 1; i <= 50000 ;i++) {
+            test.add(i);
         }
+        System.out.print("原栈：");
+       test.forEach(item -> System.out.print(item + " "));
+        System.out.println();
+        reverse(test);
+        System.out.print("转置：");
+        test.forEach(item -> System.out.print(item + " "));
 
     }
 }

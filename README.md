@@ -14,15 +14,26 @@
 
 |类名|算法含义|
 |:-:|:-:|
-| DogCatQueueAlg |猫狗队列|
-| Josephus |约瑟夫斯问题|
-| !!!MultiwordSearch |多字搜索|
-| QueueWithTwoStacks |两个堆栈实现一个队列|
-| ResizingArryQueue |数组大小调整队列|
-| SlidingWindowMaxArray |生成窗口最大值|
-| TwoStacksImplementQueue |两个堆栈生成一个队列|
+| DogCatQueueAlg.java |猫狗队列|
+| Josephus.java |约瑟夫斯问题|
+| !!!MultiwordSearch.java |多字搜索|
+| QueueWithTwoStacks.java |两个堆栈实现一个队列|
+| ResizingArryQueue.java |数组大小调整队列|
+| SlidingWindowMaxArray.java |生成窗口最大值|
+| TwoStacksImplementQueue.java |两个堆栈生成一个队列|
 
+**stack包**  
 
-
-
-
+|类名|算法含义|
+|:-:|:-:|
+| Evaluate.java |堆栈实现算数计算器|
+| EvaluateDeluxe.java |按优先级计算(中缀表达式计算器)|
+|EvaluatePostfix.java| 后缀表达式计算(算式必须是完全括号表达式)|
+|FixedCapacityStack.java|固定容量的通用堆栈|
+|FixedCapacityStackOfStrings.java|固定容量的字符串堆栈|
+|GetMinStack.java|实现栈的基本功能，并且可以返回栈中最小元素时间复杂度O(1)|
+|HanoiStack.java|汉诺塔，提供递归和堆栈两种算法|
+|Parentheses.java|平衡字符串|
+|ResizingArrayStack.java|数组大小调整堆栈|
+|ReverseStackUsingRecursive.java|使用一个栈和递归实现堆的转置|
+|StackSortStack.java | 栈排序|

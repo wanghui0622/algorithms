@@ -26,11 +26,11 @@ public class GetMinStack {
      * 出栈时，
      * 如果stackData栈顶元素与stackMin元素相同，则均做出栈操作，否则，只对stackData做出栈操作。
      */
-    public static class MyStack1 {
-        private Stack<Integer> stackData;
-        private Stack<Integer> stackMin;
+    public static class MyStackTimeForSpace {
+        private final Stack<Integer> stackData;
+        private final Stack<Integer> stackMin;
 
-        public MyStack1() {
+        public MyStackTimeForSpace() {
             this.stackData = new Stack<Integer>();
             this.stackMin = new Stack<Integer>();
         }
@@ -77,11 +77,11 @@ public class GetMinStack {
      * 出栈时，
      * 无论stackData栈顶元素与stackMin元素是否相同，均做出栈操作。
      */
-    public static class MyStack2 {
-        private Stack<Integer> stackData;
-        private Stack<Integer> stackMin;
+    public static class MyStackSpaceForTime {
+        private final Stack<Integer> stackData;
+        private final Stack<Integer> stackMin;
 
-        public MyStack2() {
+        public MyStackSpaceForTime() {
             this.stackData = new Stack<Integer>();
             this.stackMin = new Stack<Integer>();
         }
@@ -115,7 +115,7 @@ public class GetMinStack {
     }
 
     public static void main(String[] args) {
-        MyStack1 stack1 = new MyStack1();
+        MyStackTimeForSpace stack1 = new MyStackTimeForSpace();
         stack1.push(3);
         System.out.println(stack1.getmin());
         stack1.push(4);
@@ -127,7 +127,7 @@ public class GetMinStack {
 
         System.out.println("=============");
 
-        MyStack1 stack2 = new MyStack1();
+        MyStackSpaceForTime stack2 = new MyStackSpaceForTime();
         stack2.push(3);
         System.out.println(stack2.getmin());
         stack2.push(4);
