@@ -32,6 +32,9 @@ public class SortAlgorithm {
     private static Comparable[] aux;
 
     public static void main(String[] args) {
+        Integer[] selectSortArray = {8,7,1,3,5,2};
+        selectSort(selectSortArray);
+        System.out.println(Arrays.toString(selectSortArray));
         String[] a = {"M", "E", "R", "G", "E", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
         System.out.println(Arrays.toString(a));
         quickSort(a);
@@ -40,19 +43,20 @@ public class SortAlgorithm {
 
     /**
      * 选择排序, 比较次数~n*n/2,交换次数~n。
+     * 时间复杂度：O(N)
      *
-     * @param a
+     * @param a 待排序数组
      */
     public static void selectSort(Comparable[] a) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
-            int min = i;
-            for (int j = i + 1; j < n; j++) {
+            int min = i;    //最小值索引
+            for (int j = i + 1; j < n; j++) {//获取[i+1,n-1]区间的最小值
                 if (less(a[j], a[min])) {
                     min = j;
                 }
-                exch(a, i, min);
             }
+            exch(a, i, min);//最小值与索引位置数据交换位置
         }
     }
 
@@ -63,7 +67,7 @@ public class SortAlgorithm {
      * 最坏情况下：~n*n/2， ~n*n/2
      * 最好情况下：~n-1,0
      *
-     * @param a
+     * @param a 待排序数组
      */
     public static void insertionSort(Comparable[] a) {
         int n = a.length;
@@ -78,7 +82,7 @@ public class SortAlgorithm {
      * 希尔排序，通过插入排序实现；可用于大型数组。与选择和插入排序相比较，数组越大，优势越明显
      * 比较次数：最坏情况下~n^(3/2)
      *
-     * @param a
+     * @param a 待排序数组
      */
     public static void shellSort(Comparable[] a) {
         int n = a.length;
@@ -298,28 +302,27 @@ public class SortAlgorithm {
     }
 
     /**
-     * 降序比较大小写；当v<w时返回true，反之返回false。
+     * 大小比较
      *
-     * @param v
-     * @param w
-     * @return
+     * @param v 元素1
+     * @param w 元素2
+     * @return  当v<w时返回true，反之返回false。
      */
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
 
     /**
-     * 数据位置交换。
+     * 数据位置交换
      *
-     * @param a
-     * @param i
-     * @param j
+     * @param a 数组
+     * @param i 待交换位置索引1
+     * @param j 待交换位置索引2
      */
     private static void exch(Comparable[] a, int i, int j) {
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
-
     }
 
 }

@@ -1,13 +1,14 @@
 package uf;
 
 /**
- * 描述:
+ * 描述: 快速发现连通性的UF实现
  *
  * @author wanghui email:wanghuiaf@yonyou.com
  * @create 2020-05-09 下午1:58
+ *
  */
 public class QuickFindUF {
-    private int[] id;    // id[i] = component identifier of i
+    private final int[] id;    // id[i] = component identifier of i
     private int count;   // number of components
 
     /**

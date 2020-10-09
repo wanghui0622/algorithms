@@ -1,16 +1,25 @@
 package uf;
 
 /**
+ * 连通性
  *
  * @author 王辉
  * @create 2020-07-08 23:01
  * @Description union find
+ *
  */
 public class UF {
-    private int[] parent;  // parent[i] = parent of i
-    private byte[] rank;   // rank[i] = rank of subtree rooted at i (never more than 31)
-    private int count;     // number of components
+    private final int[] parent;  // 索引代表触点，触点的父连接点
+    private final byte[] rank;   // 索引代表触点为根节点的分量大小
+    private int count;          // 连通分量个数
 
+    /**
+     * 初始化构造UF
+     * 连通分量数：触点数
+     * 父连接点：默认自身
+     * 分量数：0
+     * @param n 触点数
+     */
     public UF(int n) {
         if (n < 0) throw new IllegalArgumentException();
         count = n;
@@ -23,11 +32,11 @@ public class UF {
     }
 
     /**
-     * Returns the canonical element of the set containing element {@code p}.
+     * 获取P的父连接点
      *
-     * @param  p an element
-     * @return the canonical element of the set containing {@code p}
-     * @throws IllegalArgumentException unless {@code 0 <= p < n}
+     * @param p 触点P
+     * @return P的父连接点
+     * @throws IllegalArgumentException 当 p大于n或者小于0
      */
     public int find(int p) {
         validate(p);
@@ -39,24 +48,21 @@ public class UF {
     }
 
     /**
-     * Returns the number of sets.
-     *
-     * @return the number of sets (between {@code 1} and {@code n})
+     * 分量数
+     * @return 1到n之间的任意数
      */
     public int count() {
         return count;
     }
 
     /**
-     * Returns true if the two elements are in the same set.
+     * 两个触点是否连通
      *
-     * @param  p one element
-     * @param  q the other element
-     * @return {@code true} if {@code p} and {@code q} are in the same set;
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
-     * @deprecated Replace with two calls to {@link #find(int)}.
+     * @param p 触点1
+     * @param q 触点2
+     * @return 连通返回true，不连通返回false
+     * @throws IllegalArgumentException 当p或者q大于n或者小于0
+     * @deprecated 可以直接调 {@link #find(int)}代替该方法
      */
     @Deprecated
     public boolean connected(int p, int q) {
@@ -64,34 +70,34 @@ public class UF {
     }
 
     /**
-     * Merges the set containing element {@code p} with the
-     * the set containing element {@code q}.
-     *
-     * @param  p one element
-     * @param  q the other element
-     * @throws IllegalArgumentException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
+     * 连接连两个触点
+     * 如果，当两个触点已经是连通的，不做任何操作直接返回
+     * 否则，
+     * @param p 触点1
+     * @param q 触点2
+     * @throws IllegalArgumentException  当p或者q大于n或者小于0
      */
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
         if (rootP == rootQ) return;
 
-        // make root of smaller rank point to root of larger rank
-        if      (rank[rootP] < rank[rootQ]) parent[rootP] = rootQ;
+        // 小连通分量并入大连通分量
+        if (rank[rootP] < rank[rootQ]) parent[rootP] = rootQ;
         else if (rank[rootP] > rank[rootQ]) parent[rootQ] = rootP;
         else {
             parent[rootQ] = rootP;
             rank[rootP]++;
         }
+        //分量数减1
         count--;
     }
 
-    // validate that p is a valid index
+    // 有效字段验证
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n - 1));
         }
     }
 
@@ -106,12 +112,14 @@ public class UF {
      */
     public static void main(String[] args) {
         UF uf = new UF(10);
-        int[][] aa = new int[][]{{4,3}, {3,8}, {6,5}, {9,4}, {2,1}, {8,9}, {5,0}, {7,2}, {6,5}, {6,1}, {1,0}, {6,7}};
+        int[][] aa = new int[][]{{4, 3}, {3, 8}, {6, 5}, {9, 4}, {2, 1}, {8, 9}, {5, 0}, {7, 2}, {6, 5}, {6, 1}, {1, 0}, {6, 7}};
 
-        for(int[] a : aa){
-            int p = a[0],q = a[1];
+        for (int[] a : aa) {
+            int p = a[0], q = a[1];
             if (uf.find(p) == uf.find(q)) continue;
             uf.union(p, q);
         }
-        System.out.println(uf.count() + " components");    }
+        System.out.println(uf.count() + " components");
+        System.out.println("1,8是否连通：" + (uf.find(1) == uf.find(8)? "连通" : "不连通"));
+    }
 }
