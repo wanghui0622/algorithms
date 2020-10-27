@@ -200,15 +200,23 @@ public class SortAlgorithm {
     }
     /*    ***************************归并排序 end****************************************       */
 
+    /*    ***************************快速排序 start****************************************     */
+
     /**
-     * 快速排序
+     * 快速排序入口函数
      *
-     * @param a
+     * @param a 待排序数组
      */
     public static void quickSort(Comparable[] a) {
         quickSort(a, 0, a.length - 1);
     }
 
+    /**
+     * 快速排序
+     * @param a     待排序数组
+     * @param lo    下限索引
+     * @param hi    上限索引
+     */
     private static void quickSort(Comparable[] a, int lo, int hi) {
 
         if (hi <= lo) {
@@ -225,9 +233,9 @@ public class SortAlgorithm {
      * lo,j-1中所有元素均不大于索引位置为j的元素
      * j+1,hi中所有元素均不小于索引位置为j的元素
      *
-     * @param a
-     * @param lo
-     * @param hi
+     * @param a     待排序数组
+     * @param lo    下限索引
+     * @param hi    上限索引
      * @return
      */
     private static int quickPartition(Comparable[] a, int lo, int hi) {
@@ -256,6 +264,7 @@ public class SortAlgorithm {
 
     /**
      * 三项切分的快速排序
+     * @param a
      */
     public static void quick3Sort(Comparable[] a) {
         quick3Sort(a, 0, a.length - 1);
@@ -294,7 +303,9 @@ public class SortAlgorithm {
         quick3Sort(a, gt + 1, hi);
     }
 
+    /*    ***************************快速排序 end ****************************************     */
 
+    /*   *************************** 工具方法 start ****************************************   */
     /**
      * 判断是否有序
      *
@@ -345,5 +356,7 @@ public class SortAlgorithm {
         a[i] = a[j];
         a[j] = t;
     }
+
+    /*   *************************** 工具方法 end ****************************************   */
 
 }
