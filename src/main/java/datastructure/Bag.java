@@ -45,10 +45,10 @@ public class Bag<Item> implements Iterable<Item> {
      * @param  item 待添加元素
      */
     public void add(Item item) {
-        Node<Item> oldfirst = first;
-        first = new Node<Item>();
+        Node<Item> oldFirst = first;
+        first = new Node<>();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
         n++;
     }
 
